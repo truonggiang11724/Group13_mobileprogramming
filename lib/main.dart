@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:group13_mobileprograming/pages/Category.dart';
+import 'package:group13_mobileprograming/pages/Category/Category.dart';
+import 'package:group13_mobileprograming/pages/Advise/AdviseHome.dart';
+import 'package:group13_mobileprograming/pages/Cart/CartHome.dart';
+import 'package:group13_mobileprograming/pages/Personal/PersonalHome.dart';
 
 void main() {
   runApp(PharmacityApp());
@@ -30,28 +33,28 @@ class _HomePageState extends State<HomePage> {
   final PageController _pageController = PageController();
 
   final List<String> bannerImages = [
-    'https://via.placeholder.com/400x150?text=Banner+1',
-    'https://via.placeholder.com/400x150?text=Banner+2',
-    'https://via.placeholder.com/400x150?text=Banner+3',
+    'assets/pharmacity.jpg',
+    'assets/pharmacity.jpg',
+    'assets/pharmacity.jpg',
   ];
 
   final List<Map<String, dynamic>> discountProducts = [
     {
-      "image": "https://via.placeholder.com/100",
+      "image": "assets/pharmacity.jpg",
       "name": "Thuốc A",
       "oldPrice": 50000,
       "newPrice": 40000,
       "discount": 20,
     },
     {
-      "image": "https://via.placeholder.com/100",
+      "image": "assets/pharmacity.jpg",
       "name": "Thuốc B",
       "oldPrice": 100000,
       "newPrice": 80000,
       "discount": 20,
     },
     {
-      "image": "https://via.placeholder.com/100",
+      "image": "assets/pharmacity.jpg",
       "name": "Thuốc C",
       "oldPrice": 70000,
       "newPrice": 56000,
@@ -78,19 +81,19 @@ class _HomePageState extends State<HomePage> {
     if(index==2){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Advisehome()),
       );
     }
     if(index==3){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Carthome()),
       );
     }
     if(index==4){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Personalhome()),
       );
     }
   }
@@ -207,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                              image: NetworkImage(bannerImages[index]),
+                              image: AssetImage(bannerImages[index]),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -285,7 +288,7 @@ class _HomePageState extends State<HomePage> {
 
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.network(product['image'], height: 80, fit: BoxFit.cover),
+                              Image.asset(product['image'], height: 80, fit: BoxFit.cover),
                               SizedBox(height: 8),
                               Text(
                                 product['name'],

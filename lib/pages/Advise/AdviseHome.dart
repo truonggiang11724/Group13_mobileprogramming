@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:group13_mobileprograming/main.dart';
+import 'package:group13_mobileprograming/pages/Category/Category.dart';
+import 'package:group13_mobileprograming/pages/Cart/CartHome.dart';
+import 'package:group13_mobileprograming/pages/Personal/PersonalHome.dart';
 
-class Category extends StatefulWidget {
+class Advisehome extends StatefulWidget {
   @override
-  _CategoryState createState() => _CategoryState();
+  _AdvisehomeState createState() => _AdvisehomeState();
 }
 
-class _CategoryState extends State<Category> {
+class _AdvisehomeState extends State<Advisehome> {
 
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -28,19 +31,19 @@ class _CategoryState extends State<Category> {
     if(index==2){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Advisehome()),
       );
     }
     if(index==3){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Carthome()),
       );
     }
     if(index==4){
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Category()),
+        MaterialPageRoute(builder: (context) => Personalhome()),
       );
     }
   }
@@ -98,63 +101,8 @@ class _CategoryState extends State<Category> {
               ),
             ),
             SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 16.0),
-                  Container(
 
-                    padding: EdgeInsets.only(left: 8),
-                    child: Text('Thực phẩm chức năng',style: TextStyle(fontSize: 18,),),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 8,),
-                  Divider(),
-                  SizedBox(height: 16.0,),
-                  Container(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Text('Thực phẩm chức năng',style: TextStyle(fontSize: 18,),),
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                        SizedBox(height: 8.0,),
-                        _buildCategoryItem('Dành cho trẻ em', 'assets/pharmacity.jpg'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+
             )
 
           ],
@@ -184,7 +132,7 @@ class _CategoryState extends State<Category> {
             label: 'Tài khoản',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: 2,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
