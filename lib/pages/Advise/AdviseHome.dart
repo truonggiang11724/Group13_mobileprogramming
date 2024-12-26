@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:group13_mobileprograming/main.dart';
+import 'package:group13_mobileprograming/pages/Home/Home.dart';
 import 'package:group13_mobileprograming/pages/Category/Category.dart';
 import 'package:group13_mobileprograming/pages/Cart/CartHome.dart';
 import 'package:group13_mobileprograming/pages/Personal/PersonalHome.dart';
@@ -47,6 +48,21 @@ class _AdvisehomeState extends State<Advisehome> {
       );
     }
   }
+
+  final List<String> messages = [
+    'Xin chào, cảm ơn bạn đã liên hệ với nhà thuốc. Chúng tôi có thể giúp gì cho bạn hôm nay?' // Tin nhắn mặc định từ nhà thuốc
+  ];
+  final TextEditingController _controller = TextEditingController();
+
+  void _sendMessage() {
+    if (_controller.text.trim().isNotEmpty) {
+      setState(() {
+        messages.add(_controller.text.trim());
+      });
+      _controller.clear();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,42 +87,67 @@ class _AdvisehomeState extends State<Advisehome> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              color: Colors.orange,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    Icon(Icons.search, color: Colors.grey),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Tên thuốc, triệu chứng, vitamin và t...',
-                        ),
+      body: Column(
+        children: [
+
+          // Danh sách tin nhắn
+          Expanded(
+            child: ListView.builder(
+              reverse: true, // Để tin nhắn mới nhất hiển thị ở dưới cùng
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                bool isSentByUser = index % 2 == 0; // Mẫu phân biệt tin nhắn gửi đi
+                return Align(
+                  alignment:
+                  isSentByUser ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: isSentByUser ? Colors.green[200] : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      messages[messages.length - 1 - index],
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          // Ô nhập liệu
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: 'Nhập tin nhắn...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(width: 8),
+                GestureDetector(
+                  onTap: _sendMessage,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.send, color: Colors.white),
+                  ),
+                ),
+              ],
             ),
-            SingleChildScrollView(
-
-
-            )
-
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

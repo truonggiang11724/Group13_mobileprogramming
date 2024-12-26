@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "421515778315",
+    "project_id": "group13-mobileprogramming",
+    "storage_bucket": "group13-mobileprogramming.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421515778315:android:cbdb4c07418ee528baea0e",
+        "android_client_info": {
+          "package_name": "com.example.group13_mobileprograming"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC63o0kiR4aj8INo7J5kMlOk1w9PIe5YtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
